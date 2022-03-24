@@ -7,13 +7,13 @@ def kosi_hitac (v0, theta, dt= 0.1):
     vx = [v0*np.cos((theta/180)*np.pi)]
     vy = [v0*np.sin(theta/180)*np.pi]
     ax = [0]
-    ay = [9,81]
+    ay = [-9,81]
     t = [0]
 
     for i in range(int(10/dt)):
         t.append(i*dt)
         ax.append(0)
-        ay.append(9.81)
+        ay.append(-9.81)
         vx.append(vx[i]+ax[i]*dt)
         vy.append(vy[i]+ay[i]*dt)
         x.append(x[i]+ vx[i]*dt) 

@@ -71,7 +71,7 @@ def domet(v0,theta,dt=0.1):
     print(f"Domet iznosi: {domet}m.") 
 
 
-def maksimalna_brzinu(v0,theta,dt=0.1):
+def maksimalna_brzina(v0,theta,dt=0.1):
     v = [0]
     t = [0]
     y =[0]
