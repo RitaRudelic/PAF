@@ -36,15 +36,15 @@ class HarmonicOscillator:
             self.__move()
         self.t.insert(0,0)
 
-        plt.figure(figsize=(10,5))
+        plt.figure(figsize=(12,6))
         
-        plt.subplot(4,2,2)
+        plt.subplot(5,3,3)
         plt.scatter(self.t, self.x, s=2)
        
-        plt.subplot(4,1,3)
+        plt.subplot(5,2,4)
         plt.scatter(self.t, self.v, s=2)
         
-        plt.subplot(5,2,5)
+        plt.subplot(5,3,5)
         plt.scatter(self.t, self.a, s=2)
         
         plt.tight_layout()
