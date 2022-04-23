@@ -10,11 +10,15 @@ class HarmonicOscillator:
         self.v = []
         self.x = []
         self.t = []
-
+        
+    def reset(self):
+        self.__init__()
+        
     def set_initial_conditions(self, x0, v0, k, m, vrijeme, dt):
         self.a.append((-k/m)*x0)
         self.v.append(v0)
         self.x.append(x0)
+        self.t.append(0)
         self.dt = dt
         self.vrijeme = vrijeme
         self.k = k
@@ -24,12 +28,12 @@ class HarmonicOscillator:
         self.a.append((-self.k/self.m)*self.x[-1])
         self.v.append(self.v[-1]+self.a[-1]*self.dt)
         self.x.append(self.x[-1]+self.v[-1]*self.dt)
+        self.t.append(self.t[-1]+self.dt)
       
     def gibanje(self):
-        for i in range(1,int(self.vrijeme/self.dt)):
+        for i in range(int(self.vrijeme/self.dt)):
             self.__move()
-            return(self.a, self.v, self.x)
-
+            
     def plot_trajectory(self):
         self.t.pop(0)
         for i in self.t:
@@ -50,26 +54,29 @@ class HarmonicOscillator:
         plt.tight_layout()
         plt.show()
 
-    def preciznost(self,dt,t=2):
-        self.gibanje(dt,t)
+    def preciznost(self,dt,t=20):
+        self.dt = dt
+        self.vrijeme = t
+        self.gibanje()
         plt.scatter(self.t,self.x)
         plt.title('x-t graf')
 
     def analiticki(self,dt,t1=2):
-        self.x=[]
-        self.t=[]
-        self.omega=math.sqrt(self.k/self.m)
-        self.t=0
-        while self.t<=t1:
-            x=self.x*math.cos(self.omega*self.t)
-            self.t+=dt
-            self.x.append(x)
+        self.omega = math.sqrt(self.k/self.m)
+        A = np.sqrt(self.x[0]**2+(self.v[0]/self.omega)**2)
+        fi = np.arctan(-self.v[0]/self.omega/self.x[0])
+        
+        while self.t[-1]<=t1:
+            self.x.append(A*math.cos(self.omega*self.t[-1]+fi))
+            self.t.append(self.t[-1]+dt)
+        
         return self.x,self.t
 
     def period(self,dt,t):
+        self.dt = dt
         A = self.x
         T = 0
-        self.gibanje(self)
+        self.gibanje()
         for x in self.x:
                 if x*self.x[0] < 0:
                     T += dt
