@@ -35,7 +35,7 @@ double Particle::range(){
     do{
                 move(dt);
             }
-            while (y1 >= 0);
+            while (y >= 0);
            
             
 
@@ -48,7 +48,7 @@ double Particle::time(){
     do{
                 move(dt);
             }
-            while (y1 >= 0);
+            while (y >= 0);
             
             std::cout << t << std::endl;
 }
