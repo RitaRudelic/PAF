@@ -28,7 +28,7 @@ int main(){
     };
     myfile<< "\n";
     for(int i=0;i < h1.tl.size();i++){
-        myfile<<h1.al[i];
+        myfile<<h1.tl[i];
         myfile<<" ";
     };
     myfile.close();
