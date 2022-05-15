@@ -26,6 +26,11 @@ void HarmonicOscillator::move(float dt, float t1){
                 x = x + v*dt;
                 t = t + dt;
                 
+                xl.push_back(x);
+                vl.push_back(v);
+                al.push_back(a); 
+                tl.push_back(t);
+
                 std::cout << x << std::endl;
             }
 
