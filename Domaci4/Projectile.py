@@ -153,9 +153,9 @@ class Projectile:
 
     def target(self, p, q, r):
         
-        kut = 0
+        theta = 0
         pogodak = True
-        self.kut = (kut/180)* ma.pi
+        self.theta = (theta/180)* ma.pi
         
         while pogodak:
             self.Runge_Kutta()
@@ -167,24 +167,24 @@ class Projectile:
                 if udaljenost < (r**2): 
                     pogodak = False
             
-            kut = kut + 0.1
-            self.kut = (kut/180)* ma.pi
+            theta = theta + 0.1
+            self.theta = (theta/180)* ma.pi
             
-            if kut > 180:
+            if theta > 180:
                 break
             
             if pogodak == True:
                 self.back()
         
-        if kut < 180:    
-            return kut
+        if theta < 180:    
+            return theta
 
 
     def plot_target(self, p, q, r):
         
-        kut = self.target(p,q,r)
+        theta = self.target(p,q,r)
         
-        if type(kut) == float:
+        if type(theta) == float:
             
             Circle = plt.Circle((p,q),r, color = "b")
             
@@ -194,4 +194,4 @@ class Projectile:
             plt.plot(self.list_x, self.list_y, color = "r")
             plt.show()
             
-            return kut
+            return theta
