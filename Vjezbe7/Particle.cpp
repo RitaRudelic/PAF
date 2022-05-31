@@ -7,6 +7,7 @@ Particle::Particle(double v, double theta, double x1, double y1, double step){
 
         x =  x1;
         y = y1;
+        dt = step;
         
         float theta2;
         theta2= theta*3.14/180;
@@ -24,9 +25,10 @@ Particle::~Particle(){
 void Particle::move(float dt){
     
         x = x + vx*dt;
-        vy = vy - g*dt;
+        vy = vy + g*dt;
         y = y + vy*dt;
         t = t + dt;
+        std::cout << y << std::endl;
 
 }
 
@@ -34,12 +36,14 @@ double Particle::range(){
     
     do{
                 move(dt);
+                
             }
             while (y >= 0);
-           
-            
 
-            std::cout << x << std::endl;
+    std::cout << "Domet:" << std::endl;       
+    std::cout << x << std::endl;
+            
+    return x;
 
 }
         
@@ -49,8 +53,11 @@ double Particle::time(){
                 move(dt);
             }
             while (y >= 0);
+    
+    std::cout << "Vrijeme:" << std::endl; 
+    std::cout << t << std::endl;
             
-            std::cout << t << std::endl;
+    return t;
 }
 
 

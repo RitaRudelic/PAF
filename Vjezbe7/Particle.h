@@ -3,9 +3,8 @@ class Particle {
     private:
 
     double t, x, y, vx, vy;
-    double dt;
+    float dt;
     double g = -9.81;
-
     void move(float dt);
 
     public:
