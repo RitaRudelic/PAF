@@ -1,8 +1,12 @@
 import VertikalniHitac as vh
 
-objekt = vh.VertikalniHitac(10, 10)
+o = vh.VertikalniHitac(10, 10)
+o1 = vh.VertikalniHitac(10, 10)
 
-print(objekt.maksimalna_visina(0.01))
-print(objekt.vrijeme_trajanja(0.01))
+print(o.maksimalna_visina(0.01))
 
-objekt.reset()
+o.reset()
+
+print(o1.vrijeme_trajanja(0.01))
+
+o1.reset()
